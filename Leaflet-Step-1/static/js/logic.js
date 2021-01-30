@@ -47,9 +47,15 @@ d3.json(url, function(response){
           return "#57e964";
         default:
           return "#ffffcc";
-
     }
   }
+  function mapRadius(mag) {
+    if (mag === 0) {
+      return 1;
+    }
+  return mag * 5;
+  }
+  
 })
 
 
