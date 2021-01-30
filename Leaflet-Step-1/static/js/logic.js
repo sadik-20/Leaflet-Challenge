@@ -19,7 +19,19 @@ var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.ge
 
 // read the url using d3
 d3.json(url, function(response){
-  console.log(response)
+  //console.log(response)
+  function earthquackePoint(feature){
+    return{
+      opacity: 1,
+      fillOpacity: 1,
+      fillColor: mapColor(feature.properties.mag),
+      color: "#000000",
+      radius: mapRadius(feature.properties.mag),
+      stroke:true,
+      weight: 0.5
+    };
+  }
+
 })
 
 
