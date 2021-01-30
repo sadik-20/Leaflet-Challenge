@@ -14,3 +14,13 @@ var myMap = L.map("map", {
 });
 
 nAmerica.addTo(myMap);
+//geojosn earthquake file updating weekly 
+var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+
+// read the url using d3
+d3.json(url, function(response){
+  console.log(response)
+})
+
+
+
