@@ -55,15 +55,14 @@ d3.json(url, function(response){
       return L.circleMarker(latlng);
     },
       style: earthquackePoint,
-      style: mapStyle,
   
     onEachFeature: function(feature, layer) {
         layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
   
       }
     }).addTo(myMap);
-    })
-  })
+  
+  
 });
 
 
