@@ -61,8 +61,27 @@ d3.json(url, function(response){
   
       }
     }).addTo(myMap);
+    var legend = L.control({
+      position: "bottomright"
+    });
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create("div", "info legend");
+      //labels = ['<strong>Magnitude</strong>'];
+      var grades = [0, 1, 2, 3, 4, 5];
+      var colors = ["#fffcc", "#57e964", "#af9b60", "#f87217","#e55451", "#e42217"];
+      // loop thry the intervals of colors to put it in the label
+      for (var i = 0; i<grades.length; i++) {
+        div.innerHTML +=
+        "<i style='background: " + colors[i] + "'></i> " +
+        grades[i] + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
+      }
+    //div.innerHTML = labels.join("<br>");
+      return div;
   
+    };
   
+    legend.addTo(myMap)
+   
 });
 
 
