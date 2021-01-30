@@ -35,18 +35,12 @@ d3.json(url, function(response){
 //creating a color function for each magnitude
   function mapColor(mag){
     switch(true){
-        case mag > 5:
-          return "#e42217";
-        case mag > 4:
-          return "#e55451";
-        case mag > 3:
-          return "#f87217";
-        case mag > 2:
-          return "#Af9b60";
-        case mag > 1:
-          return "#57e964";
-        default:
-          return "#ffffcc";
+        case mag > 5: return "#e42217";
+        case mag > 4: return "#e55451";
+        case mag > 3: return "#f87217";
+        case mag > 2: return "#Af9b60";
+        case mag > 1: return "#57e964";
+        default: return "#ffffcc";
     }
   }
   function mapRadius(mag) {
@@ -56,7 +50,21 @@ d3.json(url, function(response){
   return mag * 5;
   }
   
-})
+  L.geoJson(response,{
+    pointToLayer: function(feature, latlng){
+      return L.circleMarker(latlng);
+    },
+      style: earthquackePoint,
+      style: mapStyle,
+  
+    onEachFeature: function(feature, layer) {
+        layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
+  
+      }
+    }).addTo(myMap);
+    })
+  })
+});
 
 
 
