@@ -43,6 +43,7 @@ d3.json(url, function(response){
         default: return "#ffffcc";
     }
   }
+  //creating a function for radius to enlarge the circle Marker
   function mapRadius(mag) {
     if (mag === 0) {
       return 1;
@@ -55,12 +56,13 @@ d3.json(url, function(response){
       return L.circleMarker(latlng);
     },
       style: earthquackePoint,
-  
+  //Popup info of mag and location for every marker
     onEachFeature: function(feature, layer) {
         layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
   
       }
     }).addTo(myMap);
+  //creating legend
     var legend = L.control({
       position: "bottomright"
     });
@@ -76,7 +78,7 @@ d3.json(url, function(response){
         grades[i] + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
       }
     //div.innerHTML = labels.join("<br>");
-      return div;
+    //return div;
   
     };
   
