@@ -20,6 +20,7 @@ var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.ge
 // read the url using d3
 d3.json(url, function(response){
   //console.log(response)
+//creating a style function
   function earthquackePoint(feature){
     return{
       opacity: 1,
@@ -31,7 +32,24 @@ d3.json(url, function(response){
       weight: 0.5
     };
   }
+//creating a color function for each magnitude
+  function mapColor(mag){
+    switch(true){
+        case mag > 5:
+          return "#e42217";
+        case mag > 4:
+          return "#e55451";
+        case mag > 3:
+          return "#f87217";
+        case mag > 2:
+          return "#Af9b60";
+        case mag > 1:
+          return "#57e964";
+        default:
+          return "#ffffcc";
 
+    }
+  }
 })
 
 
